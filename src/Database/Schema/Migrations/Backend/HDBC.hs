@@ -24,9 +24,8 @@ import Database.Schema.Migrations.Migration
     )
 
 import Data.Text ( Text )
-import Data.String.Conversions ( cs, (<>) )
+import Data.String.Conversions ( cs )
 
-import Control.Applicative ( (<$>) )
 import Data.Time.Clock (getCurrentTime)
 
 migrationTableName :: Text

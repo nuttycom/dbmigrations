@@ -3,7 +3,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Moo.CommandHandlers where
 
-import Data.String.Conversions (cs, (<>))
+import Data.String.Conversions (cs)
 
 import Moo.Core
 import Moo.CommandUtils

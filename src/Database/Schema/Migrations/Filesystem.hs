@@ -16,19 +16,18 @@ import System.FilePath ( (</>), takeExtension, dropExtension, takeBaseName )
 import Data.Text ( Text )
 import qualified Data.Text as T
 import qualified Data.ByteString.Char8 as BSC
-import Data.String.Conversions ( cs, (<>) )
+import Data.String.Conversions ( cs )
 
 import Data.Typeable ( Typeable )
 import Data.Time.Clock ( UTCTime )
 import Data.Time () -- for UTCTime Show instance
-import qualified Data.Map as Map
 
-import Control.Applicative ( (<$>) )
 import Control.Monad ( filterM )
 import Control.Exception ( Exception(..), throw, catch )
 
 import Data.Aeson as J (Object, Value(String, Null))
-import Data.HashMap.Strict as M (toList)
+import Data.Aeson.KeyMap as M (toMapText)
+import Data.Map.Strict (toList)
 import Data.Yaml
 
 import Database.Schema.Migrations.Migration
@@ -125,13 +124,12 @@ migrationFromPath path = do
         _ -> throwFS $ "Error in " ++ (show path) ++ ": missing required field(s): " ++ (show missing)
 
 getFields :: J.Object -> [(Text, Text)]
-getFields mp = map toPair $ M.toList mp
+getFields mp = map toPair $ toList (M.toMapText mp)
     where
       toPair :: (Text, Value) -> (Text, Text)
       toPair (k, J.String v) = (cs k, cs v)
       toPair (k, J.Null) = (cs k, cs ("" :: String))
       toPair (k, v) = throwFS $ "Error in YAML input; expected string key and string value, got " ++ (show (k, v))
-getFields _ = throwFS "Error in YAML input; expected mapping"
 
 missingFields :: [(Text, Text)] -> [Text]
 missingFields fs =

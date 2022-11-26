@@ -6,7 +6,7 @@ where
 
 import Test.HUnit
 import Data.ByteString ( ByteString )
-import Data.String.Conversions ( (<>), cs )
+import Data.String.Conversions ( cs )
 import Data.Time.Clock ( UTCTime )
 
 import Database.Schema.Migrations.Filesystem.Serialize

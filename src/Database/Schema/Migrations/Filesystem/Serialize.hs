@@ -11,7 +11,6 @@ import qualified Data.Text as T
 import Data.String.Conversions ( cs )
 import Data.Time () -- for UTCTime Show instance
 import Data.Maybe ( catMaybes )
-import Data.Monoid ( (<>) )
 
 import Database.Schema.Migrations.Migration
     ( Migration(..)

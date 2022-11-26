@@ -5,7 +5,6 @@ module MigrationsTest
 where
 
 import Test.HUnit
-import Control.Applicative ((<$>))
 import qualified Data.Map as Map
 import Data.Time.Clock ( UTCTime )
 

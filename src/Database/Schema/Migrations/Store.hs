@@ -26,7 +26,6 @@ where
 import Data.Text ( Text )
 import Data.Maybe ( isJust )
 import Control.Monad ( mzero )
-import Control.Applicative ( (<$>) )
 import qualified Data.Map as Map
 import Data.Graph.Inductive.Graph ( labNodes, indeg )
 

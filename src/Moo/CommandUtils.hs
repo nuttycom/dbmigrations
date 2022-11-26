@@ -11,7 +11,7 @@ module Moo.CommandUtils
 
 import Data.Text ( Text )
 import qualified Data.Text as T
-import Data.String.Conversions ( cs, (<>) )
+import Data.String.Conversions ( cs )
 
 import Control.Exception ( finally )
 import Control.Monad ( when, forM_, unless )
